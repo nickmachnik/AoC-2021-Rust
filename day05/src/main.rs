@@ -71,7 +71,6 @@ impl Line {
             (y1..y2 + 1).map(|y| (self.x1, y)).collect()
         } else {
             let (y_change, x_change) = self.slope();
-            println!("{}, {}", y_change, x_change);
             let mut res: Vec<(isize, isize)> = Vec::new();
             res.push((self.x1, self.y1));
             let mut curr_x = self.x1;
