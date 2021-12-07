@@ -22,35 +22,20 @@ fn solve1(file: &str) -> u64 {
 }
 
 fn solve2(file: &str) -> i64 {
-    let mut positions = file
+    let positions = file
         .split(',')
         .map(|e| e.parse::<i64>().unwrap())
         .collect::<Vec<i64>>();
-    positions.sort_unstable();
-    let n_pos: i64 = positions.len() as i64;
-    let pos_sum: i64 = positions.iter().sum();
-    let mut last_right: i64 = 0;
-    let left = 2 * pos_sum;
-    let mut opt_m: i64 = 0;
-    for m in positions[0]..positions[n_pos as usize - 1] {
-        let curr_right = 2 * n_pos * m + (n_pos - 1 - m);
-        if curr_right > left {
-            if (curr_right - left) < (left - last_right) {
-                opt_m = m;
-            } else {
-                opt_m = m - 1;
-            }
-            break;
-        }
-        last_right = curr_right;
-    }
-    if opt_m == 0 {
-        panic!("no optimal m found!");
-    }
-    positions
+    let mean: i64 = positions.iter().sum::<i64>() / positions.len() as i64;
+    let a: i64 = positions
         .iter()
-        .map(|e| sum_first_n_ints((*e as i64 - opt_m as i64).abs()))
-        .sum()
+        .map(|e| sum_first_n_ints((*e as i64 - mean as i64).abs()))
+        .sum();
+    let b = positions
+        .iter()
+        .map(|e| sum_first_n_ints((*e as i64 - (mean + 1) as i64).abs()))
+        .sum();
+    a.min(b)
 }
 
 fn sum_first_n_ints(n: i64) -> i64 {
