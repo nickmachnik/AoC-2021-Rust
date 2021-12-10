@@ -1,5 +1,3 @@
-use std::collections::HashSet;
-
 const PAREN_ERR_SCORE: u64 = 3;
 const BRACK_ERR_SCORE: u64 = 57;
 const BRACE_ERR_SCORE: u64 = 1197;
