@@ -40,13 +40,6 @@ impl OctoMap {
         false
     }
 
-    fn get_energy_at(&self, ix: (usize, usize)) -> Option<u8> {
-        if self.in_bounds(ix) {
-            return Some(self.map[ix.0][ix.1]);
-        }
-        None
-    }
-
     fn get_neighbor_ixs(&self, ix: (usize, usize)) -> Vec<(usize, usize)> {
         let mut res: Vec<(usize, usize)> = Vec::new();
         let (rix, cix) = ix;
