@@ -74,7 +74,7 @@ fn solve2(file: &str) {
             nrows = *y;
         }
     }
-    let mut paper = vec![vec![','; ncols + 1]; nrows + 1];
+    let mut paper = vec![vec![' '; ncols + 1]; nrows + 1];
     for (x, y) in folded_dots.iter() {
         paper[*y][*x] = '#';
     }
