@@ -1,4 +1,4 @@
-use std::collections::{HashMap, HashSet};
+use std::collections::HashSet;
 
 fn main() {
     println!("{}", solve1(include_str!("../data/input.txt")));
